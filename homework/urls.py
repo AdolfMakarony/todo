@@ -1,7 +1,8 @@
 from django.urls import path
-from homework.views import index, huindex
+from homework.views import hw_even
 
 
 urlpatterns = [
-    path('', index)
+    path('hw_even_sum', hw_even)
+    # path('even_sum', even)
 ]
