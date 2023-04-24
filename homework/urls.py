@@ -9,4 +9,5 @@ urlpatterns = [
     path('change_case/upper_case', hw_upper_case),
     path('change_case/capitalize_each_word', hw_cap_word_case),
     path('change_case/toggle_case', hw_toggle_case),
+    # path('change_case/textswap', hw_text_swap),
 ]

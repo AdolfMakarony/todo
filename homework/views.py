@@ -1,7 +1,6 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import HttpResponse
 from django.shortcuts import render
-from homework.my_f import hw_sum_even
+from homework.service.my_f import hw_sum_even
 
 
 # Create your views here.
@@ -86,3 +85,9 @@ def hw_toggle_case(request: WSGIRequest):
             'text_change.html',
             {'text': request_data}
         )
+
+
+def hw_text_swap(request: WSGIRequest):
+    end_result = 'Here will be your text'
+    if request.method == 'POST':
+        request_data= str(dict(request.POST.items())['text', 'no text'])
