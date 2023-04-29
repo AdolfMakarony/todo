@@ -21,7 +21,7 @@ def todo_main(request: WSGIRequest):
 
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks.order_by('-id'),
-        'tasks_counts' : all_tasks.count(),
+        # 'tasks_counts' : all_tasks.count(),
     })
 
 def __create_todo(request):
