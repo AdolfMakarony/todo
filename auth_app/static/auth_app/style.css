@@ -1,6 +1,6 @@
 /* Основной цвет фона */
 body {
-    background-color: #F08A5D;
+    background-color: #a48e82;
 }
 
 form {
@@ -97,7 +97,7 @@ input[type="submit"] {
 
 button[type="button"].btn-right {
     float: right;
-    background-color: #F08A5D;
+    background-color: #418578;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -122,7 +122,7 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #F08A5D;
+    background-color: #5d909b;
 }
 
 nav li {
