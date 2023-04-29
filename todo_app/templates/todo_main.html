@@ -13,11 +13,10 @@
 
             <h1>My TODO List</h1>
         </header>
-        <form method="post">
+        <form method="post" action="">
             {% csrf_token %}
-            <input type="text" class="new-todo" autofocus placeholder="Создать задачу" name="description">
-            <input type="hidden" name="title" value="bla-blla">
-            <input type="hidden" name="taskListId" value=1>
+            <input type="text" class="new-todo" autofocus placeholder="Создать задачу" name="title">
+            <input type="hidden" name="type" value="create">
         </form>
 
         <main class="main">
@@ -28,15 +27,17 @@
                     <li class="todo">
                         <div class="view">
                             <a href="">
-                                {% if task.status %}
+                                {% if task.status_id == 1 %}
                                     <button class="toggle" aria-pressed="true"></button>
                                 {% else %}
                                     <button class="toggle" aria-pressed="false"></button>
                                 {% endif %}
-                                <label for="">{{ task.description }}</label>
+                                <label for="">{{ task.title }}</label>
                             </a>
-                            <form action="api/task/{{ task.id }}/delete" method="GET">
+                            <form action="" method="POST">
                                 {% csrf_token %}
+                                <input type="hidden" name="type" value="destroy">
+                                <input type="hidden" name="task_id" value={{  task.id }}>
                                 <button class="destroy"></button>
                             </form>
                         </div>

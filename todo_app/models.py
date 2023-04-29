@@ -9,6 +9,11 @@ class TodoList(models.Model):
     date = models.DateTimeField()
 
 class TodoStatus(models.Model):
+    C_COMPLETED = 1
+    C_NOT_COMPLETED = 2
+    C_FUCK_UP = 3
+    C_CANCELED = 4
+
     name = models.TextField()
 
 class TodoTask(models.Model):
