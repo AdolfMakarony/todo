@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{% block title %}
+    INFO
+{% endblock %}{% endblock %}
+
+{% block content %}
+    <h1>{{ content }}</h1>
+    <br>
+{#    <a href="{% url 'login' %}"><button>LOGIN</button></a>#}
+    <a href="{% url 'todo_main' %}"><button>Go to main page</button></a>
+{% endblock %}

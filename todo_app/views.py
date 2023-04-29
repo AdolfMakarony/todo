@@ -7,8 +7,11 @@ from django.shortcuts import render
 def index(request: WSGIRequest):
     return render(
         request,
-        'index.html',
-        {'name' : 'test'})
+        'todo_main.html',
+        {
+    })
+
+
 
 
 def huindex(request):

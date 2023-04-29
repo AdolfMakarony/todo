@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sentence_case</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <input name="text" placeholder="Type your text">
+    <input type="submit" value="Send">
+    <label> {{ text }}</label>
+</form>
+</body>
+</html>
