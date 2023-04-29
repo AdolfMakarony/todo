@@ -16,14 +16,12 @@ def todo_main(request: WSGIRequest):
 
         if action_type == 'destroy':
             todo = TodoTask.objects.get(pk=request.POST.get('task_id')).delete()
-    all_tasks = TodoTask.objects
-
-    print()
+    # all_tasks = TodoTask.objects.all()
 
 
     return render(request,   'todo_main.html', {
-        'tasks_array' : all_tasks.all().order_by('-id'),
-        'tasks_coumt' : all_tasks.all().count()
+        'tasks_array' : TodoTask.objects.all().order_by('-id'),
+        'tasks_counts' : TodoTask.objects.all().count(),
     })
 
 def __create_todo(request):
