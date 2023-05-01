@@ -12,7 +12,7 @@
         </label>
         <br>
         <label for="password">Password:
-            <input type="text" name="password">
+            <input type="password" name="password">
         </label>
         <br>
         {% if error_message %}
@@ -20,7 +20,7 @@
         {% endif %}
         <input type="submit" value="Enter">
         <a href={% url 'registration' %}>
-            <button type="button">Registration</button>
+            <button type="button" class="btn-right">Registration</button>
         </a>
 
     </form>

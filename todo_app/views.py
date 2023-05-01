@@ -9,6 +9,9 @@ from todo_app.models import TodoTask, TodoStatus, TodoList
 
 # Create your views here.
 def todo_main(request: WSGIRequest):
+    user = request.user
+    __todo_list_exists(user)
+
     if request.method == 'POST':
         action_type = request.POST.get('type')
         if action_type == 'create':
@@ -16,12 +19,12 @@ def todo_main(request: WSGIRequest):
 
         if action_type == 'destroy':
             todo = TodoTask.objects.get(pk=request.POST.get('task_id')).delete()
-    all_tasks = TodoTask.objects.all()
+    all_tasks = TodoTask.objects.filter(todo_list__user=user).order_by('-id')
+
 
 
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks.order_by('-id'),
-        # 'tasks_counts' : all_tasks.count(),
     })
 
 def __create_todo(request):
@@ -30,7 +33,12 @@ def __create_todo(request):
     todo.status = TodoStatus.objects.get(pk=TodoStatus.C_NOT_COMPLETED)
     todo.create_at = datetime.now()
     todo.text = ''
-    todo.todo_list = TodoList.objects.get(pk=1)
+    todo.todo_list = TodoList.objects.get(user=request.user)
     todo.save()
+
+def __todo_list_exists(user):
+    if TodoList.objects.filter(user=user).exists():
+        return
+    TodoList(user=user, date=datetime.now()).save()
 
 
