@@ -25,7 +25,11 @@ button {
 body {
     font: 14px 'Cambria', Cambria, sans-serif;
     line-height: 1.4em;
-    background: #7a1818;
+    /*background: #7a1818;*/
+    background-image: url("background/todo_backscreen.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.85;
     color: #111111;
     min-width: 230px;
     max-width: 550px;

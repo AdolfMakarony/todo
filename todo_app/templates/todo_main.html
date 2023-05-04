@@ -1,17 +1,19 @@
+{% include 'nav.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>To-Do List</title>
+    <title> To-Do List</title>
     <link rel="stylesheet" href="{% static 'todo_app/style.css' %}">
 </head>
 <body>
+{% block nav %}{% endblock %}
 <div id="app">
     <section class="todoapp">
         <header>
 
-            <h1>My TODO List</h1>
+            <h1> {{ user.username }} List</h1>
         </header>
         <form method="post" action="">
             {% csrf_token %}
@@ -26,7 +28,7 @@
                 {% for task in tasks_array %}
                     <li class="todo">
                         <div class="view">
-                            <a href="">
+                            <a href="?type=change&task_id={{ task.id }}">
                                 {% if task.status_id == 1 %}
                                     <button class="toggle" aria-pressed="true"></button>
                                 {% else %}
