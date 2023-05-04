@@ -2,7 +2,7 @@ from datetime import datetime
 
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from todo_app.models import TodoTask, TodoStatus, TodoList
 
@@ -31,8 +31,15 @@ def todo_main(request: WSGIRequest):
             my_task.save(update_fields=['status_id'])
 
         if request.GET.get('status') == 'no':
-            all_tasks = all_tasks.exclude(todo_list__todotask__status_id=1)
-            print('hui')
+            all_tasks = all_tasks.filter(status_id=1)
+
+        if request.GET.get('status') == 'yes':
+            all_tasks = all_tasks.filter(status_id=2)
+
+        if request.GET.get('action') == 'clear-completed':
+            clear_completed(all_tasks)
+
+
 
 
 
@@ -57,4 +64,9 @@ def __todo_list_exists(user):
         return
     TodoList(user=user, date=datetime.now()).save()
 
-
+def clear_completed(request):
+    # user = request.user
+    # task_to_del = TodoTask.objects.TodoTask.objects.filter(todo_list__user=user)
+    # task_to_del.filter(stastatus_id=1).delete()
+    # print('hui')
+    return redirect('todo_main')
