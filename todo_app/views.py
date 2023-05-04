@@ -11,6 +11,7 @@ from todo_app.models import TodoTask, TodoStatus, TodoList
 def todo_main(request: WSGIRequest):
     user = request.user
     __todo_list_exists(user)
+    all_tasks = TodoTask.objects.filter(todo_list__user=user)
 
     if request.method == 'POST':
         action_type = request.POST.get('type')
@@ -19,13 +20,33 @@ def todo_main(request: WSGIRequest):
 
         if action_type == 'destroy':
             todo = TodoTask.objects.get(pk=request.POST.get('task_id')).delete()
-    all_tasks = TodoTask.objects.filter(todo_list__user=user).order_by('-id')
+
+    if request.method == 'GET':
+        if request.GET.get('type') == 'change':
+            my_task = TodoTask.objects.get(id=request.GET.get('task_id'))
+            if my_task.status_id != 1:
+                my_task.status_id = 1
+            else:
+                my_task.status_id = 2
+            my_task.save(update_fields=['status_id'])
+
+        if request.GET.get('status') == 'no':
+            all_tasks = TodoTask.objects.filter(todo_list__user=user).(todo_list__todotask__status_id=2)
+
+
+
+
+
+
 
 
 
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks.order_by('-id'),
     })
+
+
+
 
 def __create_todo(request):
     todo = TodoTask()
