@@ -36,13 +36,6 @@ def todo_main(request: WSGIRequest):
         if request.GET.get('status') == 'yes':
             all_tasks = all_tasks.filter(status_id=2)
 
-        if request.GET.get('action') == 'clear-completed':
-            print('OR')
-
-
-
-
-
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks
     })
