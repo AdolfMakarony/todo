@@ -37,7 +37,7 @@ def todo_main(request: WSGIRequest):
             all_tasks = all_tasks.filter(status_id=2)
 
         if request.GET.get('action') == 'clear-completed':
-            clear_completed(all_tasks)
+            print('OR')
 
 
 
@@ -64,9 +64,8 @@ def __todo_list_exists(user):
         return
     TodoList(user=user, date=datetime.now()).save()
 
-def clear_completed(request):
-    # user = request.user
-    # task_to_del = TodoTask.objects.TodoTask.objects.filter(todo_list__user=user)
-    # task_to_del.filter(stastatus_id=1).delete()
-    # print('hui')
+def __clear_completed(request: WSGIRequest):
+    user = request.user
+    task_to_del = TodoTask.objects.filter(todo_list__user=user)
+    task_to_del.filter(status_id=1).delete()
     return redirect('todo_main')
