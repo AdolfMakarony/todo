@@ -66,6 +66,5 @@ def __todo_list_exists(user):
 
 def __clear_completed(request: WSGIRequest):
     user = request.user
-    task_to_del = TodoTask.objects.filter(todo_list__user=user)
-    task_to_del.filter(status_id=1).delete()
+    TodoTask.objects.filter(todo_list__user=user).filter(status_id=1).delete()
     return redirect('todo_main')
