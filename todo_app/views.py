@@ -31,10 +31,10 @@ def todo_main(request: WSGIRequest):
             my_task.save(update_fields=['status_id'])
 
         if request.GET.get('status') == 'no':
-            all_tasks = all_tasks.filter(status_id=1)
+            all_tasks = all_tasks.filter(status_id=2)
 
         if request.GET.get('status') == 'yes':
-            all_tasks = all_tasks.filter(status_id=2)
+            all_tasks = all_tasks.filter(status_id=1)
 
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks
