@@ -51,7 +51,7 @@
             <span class="todo-count"> <strong>{{ tasks_array.count }}</strong> items left </span>
             <ul class="filters">
                 <li>
-                    <a href="/">All</a>
+                    <a href="{% url 'todo_main' %}">All</a>
                 </li>
                 <li>
                     <a href="?status=no">Active</a>
@@ -60,7 +60,8 @@
                     <a href="?status=yes">Completed</a>
                 </li>
             </ul>
-            <form action="" method="GET">
+            <form action="{% url 'clear_completed' %}" method="POST">
+                {% csrf_token %}
                 <button class="clear-completed">
                     Clear completed
                 </button>
