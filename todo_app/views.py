@@ -19,22 +19,22 @@ def todo_main(request: WSGIRequest):
             __create_todo(request)
 
         if action_type == 'destroy':
-            todo = TodoTask.objects.get(pk=request.POST.get('task_id')).delete()
+            TodoTask.objects.get(pk=request.POST.get('task_id')).delete()
 
     if request.method == 'GET':
         if request.GET.get('type') == 'change':
             my_task = TodoTask.objects.get(id=request.GET.get('task_id'))
-            if my_task.status_id != 1:
-                my_task.status_id = 1
+            if my_task.status_id != TodoStatus.C_COMPLETED:
+                my_task.status_id = TodoStatus.C_COMPLETED
             else:
-                my_task.status_id = 2
+                my_task.status_id = TodoStatus.C_NOT_COMPLETED
             my_task.save(update_fields=['status_id'])
 
         if request.GET.get('status') == 'no':
-            all_tasks = all_tasks.exclude(status_id=1)
+            all_tasks = all_tasks.exclude(status_id=TodoStatus.C_COMPLETED)
 
         if request.GET.get('status') == 'yes':
-            all_tasks = all_tasks.filter(status_id=1)
+            all_tasks = all_tasks.filter(status_id=TodoStatus.C_COMPLETED)
 
     return render(request,   'todo_main.html', {
         'tasks_array' : all_tasks
@@ -57,7 +57,7 @@ def __todo_list_exists(user):
         return
     TodoList(user=user, date=datetime.now()).save()
 
-def __clear_completed(request: WSGIRequest):
+def clear_completed(request: WSGIRequest):
     user = request.user
     TodoTask.objects.filter(todo_list__user=user).filter(status_id=1).delete()
     return redirect('todo_main')

@@ -6,6 +6,9 @@
         <label class="logo">{% block page_title %}{% endblock %}</label>
         <ul>{{ user.username }}
             {% if user.is_authenticated %}
+                    {% if user.is_superuser %}
+                        <li><a href="{% url "user_list" %}">User list</a></li>
+                    {% endif %}
                 <li><a href="{% url "logout" %}">Logoff</a></li>
             {% else %}
                 <li><a href="{% url "login" %}">Login</a></li>

@@ -11,7 +11,7 @@ body {
     background-position: center;
     background-size: cover;
     opacity: 0.85;
-    color: #111111;
+    color: #FFFFFF;
     min-width: 230px;
     max-width: 750px;
     margin: 0 auto;
@@ -23,7 +23,7 @@ body {
 form {
     /*background-color: #FFFFFF;*/
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     margin: 0 auto;
@@ -46,7 +46,7 @@ form input[type="password"],
 form input[type="email"] {
     width: 100%;
     padding: 12px;
-    border-radius: 30px;
+    border-radius: 7px;
     border-color: #6A2C70;
     margin-bottom: 20px;
 }
@@ -54,7 +54,7 @@ form input[type="email"] {
 form input[type="number"] {
 width: 90px;
 padding: 12px;
-border-radius: 30px;
+border-radius: 7px;
 border-color: #6A2C70;
 margin-bottom: 20px;
 }
@@ -64,7 +64,7 @@ form input[type="submit"] {
     /*background-color: #6A2C70;*/
     color: #FFFFFF;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     padding: 12px 20px;
     cursor: pointer;
     transition: background-color 0.5s ease;
@@ -90,15 +90,15 @@ font-size: 18px;
 font-weight: bold;
 /*background-color: #F5F5F5;*/
 padding: 5px 100px;
-border-radius: 5px;
-text-colo: 5px;
+border-radius: 7px;
+/*text-color: 5px;*/
 }
 
 input[type="text"],
 input[type="password"],
 button[type="button"] {
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 7px;
     border: 1px solid #ccc;
     font-size: 16px;
 }
@@ -108,7 +108,7 @@ input[type="submit"] {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 7px;
     font-size: 16px;
     cursor: pointer;
     /*opacity: 0.1;*/
@@ -121,14 +121,14 @@ button[type="button"].btn-right {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 7px;
     font-size: 16px;
     cursor: pointer;
 }
 
-.button:hover {
+.btn-right:hover {
       background-color:#B83B5E;
-      transition: 0.7s;
+      /*transition: 0.7s;*/
 }
 
 table {
@@ -136,8 +136,8 @@ table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
+    /*background-color: #FFFFFF;*/
+    border-radius: 7px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -150,14 +150,14 @@ td {
 
 th {
     font-weight: bold;
-    background-color: #6A2C70;
+    /*background-color: #6A2C70;*/
     color: #FFFFFF;
 }
 
-tr:nth-child(even) {
-    background-color: #F5F5F5;
-}
+/*tr:nth-child(even) {*/
+/*    background-color: #F5F5F5;*/
+/*}*/
 
-tr:hover {
-    background-color: #ddd;
-}
+/*tr:hover {*/
+/*    background-color: #ddd;*/
+/*}*/
